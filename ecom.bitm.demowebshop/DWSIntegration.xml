@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="DWSIntegrationSuite">
+
+    <test name="IntegrationTests">
+
+        <groups>
+            <run>
+                <include name="Integration"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="demowebshop.login.signup_logintestcase"/>
+            <class name="demowebshop.homepage.homepagetestcase"/>
+            <class name="demowebshop.cart.carttestcase"/>
+            <class name="demowebshop.checkout.checkouttestcase"/>
+        </classes>
+
+    </test>
+
+</suite>

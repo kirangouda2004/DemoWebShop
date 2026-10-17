@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="4" parallel="classes" name="Failed suite [DWSParallelSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="4" parallel="classes" name="ParallelTests(failed)">
+    <classes>
+      <class name="demowebshop.cart.carttestcase">
+        <methods>
+          <include name="verifyQuantityCanBeUpdated"/>
+          <include name="verifyCartPageOpens"/>
+          <include name="setUp"/>
+          <include name="verifyProductAppearsInCart"/>
+          <include name="verifyCartAfterRemovingProducts"/>
+          <include name="tearDown"/>
+          <include name="verifyContinueShopping"/>
+        </methods>
+      </class> <!-- demowebshop.cart.carttestcase -->
+      <class name="demowebshop.homepage.homepagetestcase">
+        <methods>
+          <include name="TC_HOME_02_SearchProduct"/>
+          <include name="TC_HOME_04_CompleteSearchWorkflow"/>
+          <include name="setUp"/>
+          <include name="TC_HOME_01_HomepageLoads"/>
+          <include name="TC_HOME_05_SearchInvalidProduct"/>
+          <include name="tearDown"/>
+          <include name="TC_HOME_06_SearchOneCharacter"/>
+          <include name="TC_HOME_03_OpenProductDetails"/>
+        </methods>
+      </class> <!-- demowebshop.homepage.homepagetestcase -->
+      <class name="demowebshop.checkout.checkouttestcase">
+        <methods>
+          <include name="setUp"/>
+          <include name="verifyBillingAddressFieldsDisplayed"/>
+          <include name="verifyProductAndTotalOnOrderReview"/>
+          <include name="verifyCheckoutFlowWithoutPlacingOrder"/>
+          <include name="verifyCheckoutStartsFromNonEmptyCart"/>
+          <include name="completeOrderSuccessfully"/>
+          <include name="tearDown"/>
+          <include name="verifyRequiredBillingFieldsCannotBeSkipped"/>
+        </methods>
+      </class> <!-- demowebshop.checkout.checkouttestcase -->
+      <class name="demowebshop.login.signup_logintestcase">
+        <methods>
+          <include name="TC_ID05_registerWithExistingEmail"/>
+          <include name="setUp"/>
+          <include name="TC_ID02_registerWithValidDetails"/>
+          <include name="TC_ID07_loginWithValidCredentials"/>
+          <include name="TC_ID08_loginWithInvalidOrBlankCredentials"/>
+          <include name="TC_ID04_registerWithInvalidEmail"/>
+          <include name="TC_ID06_verifyLoginPageOpens"/>
+          <include name="tearDown"/>
+          <include name="TC_ID01_verifyRegistrationPageOpens"/>
+          <include name="TC_ID03_registerWithBlankFields"/>
+        </methods>
+      </class> <!-- demowebshop.login.signup_logintestcase -->
+    </classes>
+  </test> <!-- ParallelTests(failed) -->
+</suite> <!-- Failed suite [DWSParallelSuite] -->

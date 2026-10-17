@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="demowebshop.login.signup_logintestcase">
+        <methods>
+          <include name="TC_ID05_registerWithExistingEmail"/>
+          <include name="setUp"/>
+          <include name="TC_ID02_registerWithValidDetails"/>
+          <include name="TC_ID07_loginWithValidCredentials"/>
+          <include name="TC_ID08_loginWithInvalidOrBlankCredentials"/>
+          <include name="TC_ID06_verifyLoginPageOpens"/>
+          <include name="TC_ID04_registerWithInvalidEmail"/>
+          <include name="tearDown"/>
+          <include name="TC_ID01_verifyRegistrationPageOpens"/>
+          <include name="TC_ID03_registerWithBlankFields"/>
+        </methods>
+      </class> <!-- demowebshop.login.signup_logintestcase -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

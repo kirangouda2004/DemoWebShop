@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [DWSFunctionalSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="FunctionalTests(failed)">
+    <groups>
+      <run>
+        <include name="Functionality"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="demowebshop.homepage.homepagetestcase">
+        <methods>
+          <include name="TC_HOME_02_SearchProduct"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- demowebshop.homepage.homepagetestcase -->
+      <class name="demowebshop.cart.carttestcase">
+        <methods>
+          <include name="verifyQuantityCanBeUpdated"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- demowebshop.cart.carttestcase -->
+      <class name="demowebshop.checkout.checkouttestcase">
+        <methods>
+          <include name="verifyBillingAddressFieldsDisplayed"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- demowebshop.checkout.checkouttestcase -->
+    </classes>
+  </test> <!-- FunctionalTests(failed) -->
+</suite> <!-- Failed suite [DWSFunctionalSuite] -->

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="DWSFunctionalSuite">
+
+    <test name="FunctionalTests">
+
+        <groups>
+            <run>
+                <include name="Functional"/>
+                <include name="Functionality"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="demowebshop.login.signup_logintestcase"/>
+            <class name="demowebshop.homepage.homepagetestcase"/>
+            <class name="demowebshop.cart.carttestcase"/>
+            <class name="demowebshop.checkout.checkouttestcase"/>
+        </classes>
+
+    </test>
+
+</suite>

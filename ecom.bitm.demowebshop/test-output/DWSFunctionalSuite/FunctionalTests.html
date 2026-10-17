@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>TestNG:  FunctionalTests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>FunctionalTests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>10/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sat Oct 17 08:36:26 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>105 seconds (105668 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td>Functional Functionality </td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID05_registerWithExistingEmail()'><b>TC_ID05_registerWithExistingEmail</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID05, Scenario=Register with an existing email, Gender=male, FirstName=kiran, LastName=gouda, Email=kirangoudav@gmail.com, Password=kiran@123, ConfirmPassword=kiran@123}</td>
+<td></td>
+<td>2</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID07_loginWithValidCredentials()'><b>TC_ID07_loginWithValidCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID07, Scenario=Login with valid credentials, Gender=, FirstName=, LastName=, Email=kirangoudav@gmail.com, Password=Kiran123, ConfirmPassword=}</td>
+<td></td>
+<td>1</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID08_loginWithInvalidOrBlankCredentials()'><b>TC_ID08_loginWithInvalidOrBlankCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID08, Scenario=Login with blank credentials, Gender=, FirstName=, LastName=, Email=, Password=, ConfirmPassword=}</td>
+<td></td>
+<td>11</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID02_registerWithValidDetails()'><b>TC_ID02_registerWithValidDetails</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID02, Scenario=Register with valid details, Gender=male, FirstName=kiran, LastName=v, Email=kiran@gmail.com, Password=kiran@12345, ConfirmPassword=kiran@12345}</td>
+<td></td>
+<td>2</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID08_loginWithInvalidOrBlankCredentials()'><b>TC_ID08_loginWithInvalidOrBlankCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID08, Scenario=Login with invalid credentials, Gender=, FirstName=, LastName=, Email=wrong-user@example.com, Password=WrongPassword123, ConfirmPassword=}</td>
+<td></td>
+<td>11</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.checkout.checkouttestcase.verifyBillingAddressFieldsDisplayed()'><b>verifyBillingAddressFieldsDisplayed</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
+<td></td>
+<td>9</td>
+<td>demowebshop.checkout.checkouttestcase@4d1c00d0</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID04_registerWithInvalidEmail()'><b>TC_ID04_registerWithInvalidEmail</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID04, Scenario=Register with invalid email format, Gender=male, FirstName=Test, LastName=User, Email=invalid-email, Password=Test@12345, ConfirmPassword=Test@12345}</td>
+<td></td>
+<td>1</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.cart.carttestcase.verifyQuantityCanBeUpdated()'><b>verifyQuantityCanBeUpdated</b><br>Test class: demowebshop.cart.carttestcase</td>
+<td></td>
+<td>18</td>
+<td>demowebshop.cart.carttestcase@79079097</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID03_registerWithBlankFields()'><b>TC_ID03_registerWithBlankFields</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID03, Scenario=Register with blank required fields, Gender=, FirstName=, LastName=, Email=, Password=, ConfirmPassword=}</td>
+<td></td>
+<td>0</td>
+<td>demowebshop.login.signup_logintestcase@1165b38</td></tr>
+<tr>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_02_SearchProduct()'><b>TC_HOME_02_SearchProduct</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>1</td>
+<td>demowebshop.homepage.homepagetestcase@3bf7ca37</td></tr>
+</table><p>
+</body>
+</html>
