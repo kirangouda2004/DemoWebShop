@@ -2,6 +2,8 @@
 package ecom.bitm.demowebshop.objRepo;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -69,10 +71,12 @@ public class CheckoutPage {
 
     // Shipping address and shipping method continue buttons
     private By shippingAddressContinueButton =
-            By.cssSelector("input.button-1.shipping-address-next-step-button");
+            By.cssSelector(
+                    "input.button-1.shipping-address-next-step-button");
 
     private By shippingMethodContinueButton =
-            By.cssSelector("input.button-1.shipping-method-next-step-button");
+            By.cssSelector(
+                    "input.button-1.shipping-method-next-step-button");
 
     // Order review section
     private By orderReviewSection =
@@ -81,9 +85,6 @@ public class CheckoutPage {
     // Order completion information
     @FindBy(css = ".section.order-completed")
     private WebElement orderCompletedSection;
-
-    @FindBy(css = ".order-number")
-    private WebElement orderNumber;
 
     @FindBy(css = ".order-completed .title")
     private WebElement orderCompletedMessage;
@@ -97,34 +98,34 @@ public class CheckoutPage {
         PageFactory.initElements(driver, this);
     }
 
-    // Accept terms and conditions when the checkbox is not selected
+    // Accept terms and conditions when the checkbox is not selected.
     public void acceptTermsAndConditions() {
         if (!termsCheckbox.isSelected()) {
             termsCheckbox.click();
         }
     }
 
-    // Begin checkout from the cart page
+    // Begin checkout from the cart page.
     public void clickCheckout() {
         acceptTermsAndConditions();
         checkoutButton.click();
     }
 
-    // Select an existing billing address or New Address
+    // Select an existing billing address or New Address.
     public void selectBillingAddress(String address) {
         new Select(billingAddressDropdown)
                 .selectByVisibleText(address);
     }
 
-    // Check whether the billing address dropdown is available
+    // Check whether the billing address dropdown is displayed.
     public boolean isBillingAddressDropdownDisplayed() {
-        return !driver.findElements(
-                By.id("billing-address-select")).isEmpty()
-                && driver.findElement(
-                By.id("billing-address-select")).isDisplayed();
+        List<WebElement> elements =
+                driver.findElements(By.id("billing-address-select"));
+
+        return !elements.isEmpty() && elements.get(0).isDisplayed();
     }
 
-    // Check whether all new billing address fields are displayed
+    // Check whether all new billing address fields are displayed.
     public boolean areBillingFieldsDisplayed() {
         By[] billingFields = {
             By.id("BillingNewAddress_FirstName"),
@@ -149,7 +150,7 @@ public class CheckoutPage {
         return true;
     }
 
-    // Enter billing address details
+    // Enter billing address details.
     public void enterBillingAddress(
             String firstName,
             String lastName,
@@ -172,7 +173,7 @@ public class CheckoutPage {
 
         new Select(countryDropdown).selectByVisibleText(country);
 
-        // Select a state only when a value is provided
+        // Select a state only when a value is provided.
         if (state != null && !state.isBlank()) {
             new Select(stateDropdown).selectByVisibleText(state);
         }
@@ -190,16 +191,16 @@ public class CheckoutPage {
         phoneField.sendKeys(phone);
     }
 
-    // Continue after entering billing details
+    // Continue after entering billing details.
     public void clickBillingContinue() {
         billingContinueButton.click();
     }
 
-    // Check whether billing validation messages are displayed
+    // Check whether billing validation messages are displayed.
     public boolean areBillingValidationErrorsDisplayed() {
         List<WebElement> errors = driver.findElements(
                 By.cssSelector(
-                    ".field-validation-error, .validation-summary-errors"));
+                        ".field-validation-error, .validation-summary-errors"));
 
         for (WebElement error : errors) {
             if (error.isDisplayed()
@@ -211,7 +212,7 @@ public class CheckoutPage {
         return false;
     }
 
-    // Get the number of visible field validation errors
+    // Get the number of visible field validation errors.
     public int getValidationErrorCount() {
         int count = 0;
 
@@ -225,53 +226,55 @@ public class CheckoutPage {
         return count;
     }
 
-    // Continue after selecting the shipping address
+    // Continue after selecting the shipping address.
     public void clickShippingAddressContinue() {
         driver.findElement(shippingAddressContinueButton).click();
     }
 
-    // Select the Ground shipping option
+    // Select the Ground shipping option.
     public void selectGroundShipping() {
         driver.findElement(By.xpath(
-            "//label[contains(normalize-space(.), 'Ground')]"))
-            .click();
+                "//label[contains(normalize-space(.), 'Ground')]"))
+                .click();
     }
 
-    // Continue after selecting a shipping method
+    // Continue after selecting a shipping method.
     public void clickShippingMethodContinue() {
         driver.findElement(shippingMethodContinueButton).click();
     }
 
-    // Select Cash On Delivery when the option is available
+    // Select Cash On Delivery when available.
     public void selectCashOnDelivery() {
         driver.findElement(By.xpath(
-            "//label[contains(normalize-space(.), 'Cash On Delivery')]"))
-            .click();
+                "//label[contains(normalize-space(.), 'Cash On Delivery')]"))
+                .click();
     }
 
-    // Continue through the payment method step
+    // Continue through the payment method step.
     public void clickPaymentMethodContinue() {
         paymentMethodContinueButton.click();
     }
 
-    // Continue through the payment information step
+    // Continue through the payment information step.
     public void clickPaymentInfoContinue() {
         paymentInfoContinueButton.click();
     }
 
-    // Check whether the order review section is displayed
+    // Check whether the order review section is displayed.
     public boolean isOrderReviewDisplayed() {
-        return !driver.findElements(orderReviewSection).isEmpty()
-                && driver.findElement(orderReviewSection).isDisplayed();
+        List<WebElement> elements =
+                driver.findElements(orderReviewSection);
+
+        return !elements.isEmpty() && elements.get(0).isDisplayed();
     }
 
-    // Check the expected product name on the order review page
+    // Check the expected product name on the order review page.
     public boolean isProductPresentOnOrderReview(String productName) {
         return driver.findElement(By.tagName("body"))
                 .getText().contains(productName);
     }
 
-    // Check whether the order review displays a total
+    // Check whether the order review displays a total.
     public boolean isOrderTotalDisplayed() {
         String pageText = driver.findElement(By.tagName("body"))
                 .getText();
@@ -279,12 +282,12 @@ public class CheckoutPage {
         return pageText.contains("Total:");
     }
 
-    // Confirm the order; call this only in TC-CHK-10
+    // Confirm the order.
     public void clickConfirmOrder() {
         confirmOrderButton.click();
     }
 
-    // Check whether the order completion section is displayed
+    // Check whether the order completion section is displayed.
     public boolean isOrderCompletedDisplayed() {
         List<WebElement> sections = driver.findElements(
                 By.cssSelector(".section.order-completed"));
@@ -298,17 +301,31 @@ public class CheckoutPage {
         return false;
     }
 
-    // Get the order number after successful order placement
+    // Read the order number from the actual confirmation page text.
     public String getOrderNumber() {
-        return orderNumber.getText();
+        String pageText = driver.findElement(By.tagName("body"))
+                .getText();
+
+        Pattern pattern = Pattern.compile(
+                "Order\\s+number\\s*:\\s*(\\S+)",
+                Pattern.CASE_INSENSITIVE);
+
+        Matcher matcher = pattern.matcher(pageText);
+
+        if (matcher.find()) {
+            return matcher.group(1).trim();
+        }
+
+        throw new AssertionError(
+                "Order number was not found on the order confirmation page.");
     }
 
-    // Get the order completion message
+    // Get the order completion message.
     public String getOrderCompletedMessage() {
         return orderCompletedMessage.getText();
     }
 
-    // Get the current page URL
+    // Get the current page URL.
     public String getCurrentPageUrl() {
         return driver.getCurrentUrl();
     }

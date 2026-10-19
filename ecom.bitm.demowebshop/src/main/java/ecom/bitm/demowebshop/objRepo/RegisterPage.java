@@ -1,4 +1,3 @@
-
 package ecom.bitm.demowebshop.objRepo;
 
 import org.openqa.selenium.WebDriver;
@@ -141,8 +140,8 @@ public class RegisterPage {
                     confirmPasswordTextField.getAttribute("type"));
     }
 
-    // Open the registration page
-    public void openRegistrationPage() {
-        driver.get("https://demowebshop.tricentis.com/register");
+    // Open the registration page using the URL from CommonData.properties
+    public void openRegistrationPage(String baseUrl) {
+        driver.get(baseUrl.replaceAll("/+$", "") + "/register");
     }
 }

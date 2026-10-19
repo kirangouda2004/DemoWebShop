@@ -1,7 +1,8 @@
-
 package demowebshop.cart;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -10,7 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 import ecom.bitm.demowebshop.baseClass.baseclass;
 import ecom.bitm.demowebshop.objRepo.CartPage;
@@ -36,10 +36,30 @@ public class carttestcase extends baseclass {
         }
     }
 
+    // Get the application URL without a trailing slash
+    private String getBaseUrl() {
+        String url = properties.getProperty("url");
+
+        if (url == null || url.isBlank()) {
+            throw new IllegalStateException(
+                    "Application URL is missing in CommonData.properties");
+        }
+
+        return url.replaceAll("/+$", "");
+    }
+
+    // Create an explicit wait using CommonData.properties
+    private WebDriverWait getWait() {
+        int waitTime = Integer.parseInt(
+                properties.getProperty("explicitWait", "20"));
+
+        return new WebDriverWait(driver, Duration.ofSeconds(waitTime));
+    }
+
     // Log in using credentials stored in Excel
     private void loginToApplication(String email, String password) {
 
-        driver.get(properties.getProperty("url") + "login");
+        driver.get(getBaseUrl() + "/login");
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(email, password);
@@ -51,41 +71,33 @@ public class carttestcase extends baseclass {
 
     // Open the cart page
     private CartPage openCart() {
-        driver.get(properties.getProperty("url") + "cart");
+        driver.get(getBaseUrl() + "/cart");
         return new CartPage(driver);
     }
 
-    // Search for a product, configure it if required, and add it to the cart
+    // Search for a product and add it to the cart
     private void addProductToCart(String productName) {
 
-        String searchUrl = properties.getProperty("url")
-                + "search?q="
-                + productName.trim().replace(" ", "+");
+        String encodedProductName = URLEncoder.encode(
+                productName.trim(), StandardCharsets.UTF_8);
+
+        String searchUrl = getBaseUrl()
+                + "/search?q="
+                + encodedProductName;
 
         driver.get(searchUrl);
 
         ProductPage productPage = new ProductPage(driver);
         productPage.clickProduct(productName.trim());
 
-        WebDriverWait wait = new WebDriverWait(
-                driver,
-                Duration.ofSeconds(
-                        Long.parseLong(
-                                properties.getProperty("explicitWait", "20")
-                        )
-                )
-        );
-
         // Build your own computer requires an HDD selection
         if (productName.trim().equalsIgnoreCase(
                 "Build your own computer")) {
 
-            // Select the HDD option using its visible label
             By hddOption = By.xpath(
-                    "//label[contains(normalize-space(), '320 GB')]"
-            );
+                    "//label[contains(normalize-space(), '320 GB')]");
 
-            wait.until(
+            getWait().until(
                     ExpectedConditions.elementToBeClickable(hddOption)
             ).click();
         }
@@ -95,8 +107,8 @@ public class carttestcase extends baseclass {
                 By.cssSelector("input[id^='add-to-cart-button']")
         ).click();
 
-        // Wait for the site's success or error notification
-        wait.until(ExpectedConditions.or(
+        // Wait for the success or error notification
+        getWait().until(ExpectedConditions.or(
                 ExpectedConditions.visibilityOfElementLocated(
                         By.cssSelector(".bar-notification.success")),
                 ExpectedConditions.visibilityOfElementLocated(
@@ -111,8 +123,7 @@ public class carttestcase extends baseclass {
                 ).isDisplayed()) {
 
             Assert.fail(
-                    "Unable to add product: " + productName
-            );
+                    "Unable to add product: " + productName);
         }
     }
 
@@ -162,8 +173,6 @@ public class carttestcase extends baseclass {
     }
 
     // TC-CART-03: Verify that product quantity can be updated
-
-    // TC-CART-03: Verify that product quantity can be updated to two
     @Test(groups = "Functionality")
     public void verifyQuantityCanBeUpdated() throws IOException {
 
@@ -176,7 +185,6 @@ public class carttestcase extends baseclass {
         String productName = getTestData(row, "ProductName").trim();
         String quantity = getTestData(row, "Quantity");
 
-        // Add the product using the existing helper method
         addProductToCart(productName);
 
         CartPage cartPage = openCart();
@@ -185,29 +193,17 @@ public class carttestcase extends baseclass {
                 cartPage.getCartItemCount() > 0,
                 "Product was not added to the cart.");
 
-        // Update the product quantity
         cartPage.updateQuantity(0, quantity);
         cartPage.clickUpdateCart();
 
-        // Re-find the quantity field on every poll.
-        // This handles the cart refresh and stale elements.
-        WebDriverWait wait = new WebDriverWait(
-                driver,
-                Duration.ofSeconds(
-                        Long.parseLong(
-                                properties.getProperty("explicitWait", "20")
-                        )
-                )
-        );
-
-        boolean quantityUpdated = wait.until(d -> {
+        // Check the quantity after the cart refresh
+        boolean quantityUpdated = getWait().until(d -> {
             try {
                 return quantity.equals(
                         d.findElement(
                                 By.cssSelector(
                                         ".cart-item-row input.qty-input"))
-                         .getAttribute("value")
-                );
+                                .getAttribute("value"));
             } catch (org.openqa.selenium.StaleElementReferenceException e) {
                 return false;
             } catch (org.openqa.selenium.NoSuchElementException e) {
@@ -219,11 +215,6 @@ public class carttestcase extends baseclass {
                 quantityUpdated,
                 "Product quantity was not updated to " + quantity + ".");
     }
-
-
-    // TC-CART-04: Verify that removing the product empties the cart
-
-
 
     // TC-CART-04: Verify that all products can be removed from the cart
     @Test(groups = "System")
@@ -237,46 +228,35 @@ public class carttestcase extends baseclass {
 
         String productName = getTestData(row, "ProductName").trim();
 
-        // Add the product from Excel
         addProductToCart(productName);
 
-        // Open the cart
         CartPage cartPage = openCart();
 
         Assert.assertTrue(
                 cartPage.getCartItemCount() > 0,
                 "The cart is empty before removing products.");
 
-        // Select every product for removal
         int itemCount = cartPage.getCartItemCount();
 
         for (int i = 0; i < itemCount; i++) {
             cartPage.selectItemForRemoval(i);
         }
 
-        // Apply the removal once
         cartPage.clickUpdateCart();
 
-        // Verify that the cart is empty
-        WebDriverWait wait = new WebDriverWait(
-                driver,
-                java.time.Duration.ofSeconds(
-                        Long.parseLong(
-                                properties.getProperty("explicitWait", "20"))));
-
-        wait.until(ExpectedConditions.or(
+        getWait().until(ExpectedConditions.or(
                 ExpectedConditions.numberOfElementsToBe(
                         By.cssSelector(".cart-item-row"), 0),
                 ExpectedConditions.textToBePresentInElementLocated(
                         By.cssSelector(".order-summary-content"),
-                        "Your Shopping Cart is empty!")));
+                        "Your Shopping Cart is empty!")
+        ));
 
         Assert.assertEquals(
                 cartPage.getCartItemCount(),
                 0,
                 "Products remain in the cart after removal.");
     }
-
 
     // TC-CART-05: Verify Continue Shopping navigation
     @Test(groups = "Smoke")
@@ -303,6 +283,6 @@ public class carttestcase extends baseclass {
 
         Assert.assertFalse(
                 driver.getCurrentUrl().contains("/cart"),
-                "Continue Shopping did not navigate away from the cart."); 
+                "Continue Shopping did not navigate away from the cart.");
     }
 }

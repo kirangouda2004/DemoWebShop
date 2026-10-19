@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>ChromeTests</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>25/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>26/0/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Oct 17 15:49:24 IST 2026</td>
+<td>Started on:</td><td>Mon Oct 19 07:57:00 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>356 seconds (356344 ms)</td>
+<tr><td>Total time:</td><td>280 seconds (280651 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,78 +67,6 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
-<table width='100%' border='1' class='invocation-failed'>
-<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='demowebshop.checkout.checkouttestcase.verifyCheckoutStartsFromNonEmptyCart()'><b>verifyCheckoutStartsFromNonEmptyCart</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for at least one condition to be valid:
-1. visibility of element found by By.cssSelector: .bar-notification.success (actual: null)
-2. visibility of element found by By.cssSelector: .bar-notification.error, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;.bar-notification.error&quot;}. (actual: null)
-
-(tried for 10 seconds with 500 milliseconds interval)
-Build info: version: &apos;4.51.0&apos;, revision: &apos;35c5fab 35c5fab4a58fa5878edb255eb7747b04ca51a015&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.82, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\ADMIN\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:45149}, goog:processID: 18476, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:45149/devtoo..., se:cdpVersion: 155.0.8059.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d1923fb5d81119f49ff60dbb8e9a8933
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at demowebshop.checkout.checkouttestcase.addProductToCart(checkouttestcase.java:105)
-	at demowebshop.checkout.checkouttestcase.openCheckout(checkouttestcase.java:124)
-	at demowebshop.checkout.checkouttestcase.verifyCheckoutStartsFromNonEmptyCart(checkouttestcase.java:154)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 25 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1505756962", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1505756962'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for at least one condition to be valid:
-1. visibility of element found by By.cssSelector: .bar-notification.success (actual: null)
-2. visibility of element found by By.cssSelector: .bar-notification.error, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;.bar-notification.error&quot;}. (actual: null)
-
-(tried for 10 seconds with 500 milliseconds interval)
-Build info: version: &apos;4.51.0&apos;, revision: &apos;35c5fab 35c5fab4a58fa5878edb255eb7747b04ca51a015&apos;
-System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.82, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\ADMIN\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:45149}, goog:processID: 18476, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:45149/devtoo..., se:cdpVersion: 155.0.8059.82, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d1923fb5d81119f49ff60dbb8e9a8933
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at demowebshop.checkout.checkouttestcase.addProductToCart(checkouttestcase.java:105)
-	at demowebshop.checkout.checkouttestcase.openCheckout(checkouttestcase.java:124)
-	at demowebshop.checkout.checkouttestcase.verifyCheckoutStartsFromNonEmptyCart(checkouttestcase.java:154)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:739)
-	at org.testng.TestRunner.run(TestRunner.java:614)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>15</td>
-<td>demowebshop.checkout.checkouttestcase@3857f613</td></tr>
-</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -148,130 +76,135 @@ Session ID: d1923fb5d81119f49ff60dbb8e9a8933
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='demowebshop.checkout.checkouttestcase.verifyRequiredBillingFieldsCannotBeSkipped()'><b>verifyRequiredBillingFieldsCannotBeSkipped</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
-<td></td>
-<td>10</td>
-<td>demowebshop.checkout.checkouttestcase@3857f613</td></tr>
-<tr>
-<td title='demowebshop.cart.carttestcase.verifyQuantityCanBeUpdated()'><b>verifyQuantityCanBeUpdated</b><br>Test class: demowebshop.cart.carttestcase</td>
-<td></td>
-<td>16</td>
-<td>demowebshop.cart.carttestcase@489115ef</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID07_loginWithValidCredentials()'><b>TC_ID07_loginWithValidCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID07, Scenario=Login with valid credentials, Gender=, FirstName=, LastName=, Email=kirangoudav@gmail.com, Password=Kiran123, ConfirmPassword=}</td>
-<td></td>
-<td>2</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.homepage.homepagetestcase.TC_HOME_06_SearchOneCharacter()'><b>TC_HOME_06_SearchOneCharacter</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
-<td></td>
-<td>11</td>
-<td>demowebshop.homepage.homepagetestcase@15de0b3c</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID01_verifyRegistrationPageOpens()'><b>TC_ID01_verifyRegistrationPageOpens</b><br>Test class: demowebshop.login.signup_logintestcase</td>
-<td></td>
-<td>0</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.homepage.homepagetestcase.TC_HOME_02_SearchProduct()'><b>TC_HOME_02_SearchProduct</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
-<td></td>
-<td>1</td>
-<td>demowebshop.homepage.homepagetestcase@15de0b3c</td></tr>
-<tr>
-<td title='demowebshop.checkout.checkouttestcase.verifyProductAndTotalOnOrderReview()'><b>verifyProductAndTotalOnOrderReview</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
-<td></td>
-<td>19</td>
-<td>demowebshop.checkout.checkouttestcase@3857f613</td></tr>
-<tr>
-<td title='demowebshop.cart.carttestcase.verifyCartAfterRemovingProducts()'><b>verifyCartAfterRemovingProducts</b><br>Test class: demowebshop.cart.carttestcase</td>
-<td></td>
-<td>37</td>
-<td>demowebshop.cart.carttestcase@489115ef</td></tr>
-<tr>
-<td title='demowebshop.homepage.homepagetestcase.TC_HOME_04_CompleteSearchWorkflow()'><b>TC_HOME_04_CompleteSearchWorkflow</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
-<td></td>
-<td>1</td>
-<td>demowebshop.homepage.homepagetestcase@15de0b3c</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID04_registerWithInvalidEmail()'><b>TC_ID04_registerWithInvalidEmail</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID04, Scenario=Register with invalid email format, Gender=male, FirstName=Test, LastName=User, Email=invalid-email, Password=Test@12345, ConfirmPassword=Test@12345}</td>
-<td></td>
-<td>1</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.homepage.homepagetestcase.TC_HOME_03_OpenProductDetails()'><b>TC_HOME_03_OpenProductDetails</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
-<td></td>
-<td>3</td>
-<td>demowebshop.homepage.homepagetestcase@15de0b3c</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID08_loginWithInvalidOrBlankCredentials()'><b>TC_ID08_loginWithInvalidOrBlankCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID08, Scenario=Login with invalid credentials, Gender=, FirstName=, LastName=, Email=wrong-user@example.com, Password=WrongPassword123, ConfirmPassword=}</td>
-<td></td>
-<td>11</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.checkout.checkouttestcase.verifyCheckoutFlowWithoutPlacingOrder()'><b>verifyCheckoutFlowWithoutPlacingOrder</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
-<td></td>
-<td>18</td>
-<td>demowebshop.checkout.checkouttestcase@3857f613</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID03_registerWithBlankFields()'><b>TC_ID03_registerWithBlankFields</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID03, Scenario=Register with blank required fields, Gender=, FirstName=, LastName=, Email=, Password=, ConfirmPassword=}</td>
-<td></td>
-<td>0</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID05_registerWithExistingEmail()'><b>TC_ID05_registerWithExistingEmail</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID05, Scenario=Register with an existing email, Gender=male, FirstName=kiran, LastName=gouda, Email=kirangoudav@gmail.com, Password=kiran@123, ConfirmPassword=kiran@123}</td>
-<td></td>
-<td>2</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.cart.carttestcase.verifyContinueShopping()'><b>verifyContinueShopping</b><br>Test class: demowebshop.cart.carttestcase</td>
-<td></td>
-<td>17</td>
-<td>demowebshop.cart.carttestcase@489115ef</td></tr>
-<tr>
-<td title='demowebshop.cart.carttestcase.verifyCartPageOpens()'><b>verifyCartPageOpens</b><br>Test class: demowebshop.cart.carttestcase</td>
-<td></td>
-<td>4</td>
-<td>demowebshop.cart.carttestcase@489115ef</td></tr>
-<tr>
 <td title='demowebshop.cart.carttestcase.verifyProductAppearsInCart()'><b>verifyProductAppearsInCart</b><br>Test class: demowebshop.cart.carttestcase</td>
 <td></td>
-<td>15</td>
-<td>demowebshop.cart.carttestcase@489115ef</td></tr>
-<tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID06_verifyLoginPageOpens()'><b>TC_ID06_verifyLoginPageOpens</b><br>Test class: demowebshop.login.signup_logintestcase</td>
-<td></td>
-<td>0</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
-<tr>
-<td title='demowebshop.homepage.homepagetestcase.TC_HOME_05_SearchInvalidProduct()'><b>TC_HOME_05_SearchInvalidProduct</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
-<td></td>
-<td>11</td>
-<td>demowebshop.homepage.homepagetestcase@15de0b3c</td></tr>
+<td>8</td>
+<td>demowebshop.cart.carttestcase@3857f613</td></tr>
 <tr>
 <td title='demowebshop.login.signup_logintestcase.TC_ID02_registerWithValidDetails()'><b>TC_ID02_registerWithValidDetails</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID02, Scenario=Register with valid details, Gender=male, FirstName=kiran, LastName=v, Email=kiran@gmail.com, Password=kiran@12345, ConfirmPassword=kiran@12345}</td>
 <td></td>
 <td>2</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
 <tr>
-<td title='demowebshop.checkout.checkouttestcase.verifyBillingAddressFieldsDisplayed()'><b>verifyBillingAddressFieldsDisplayed</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
-<td></td>
-<td>9</td>
-<td>demowebshop.checkout.checkouttestcase@3857f613</td></tr>
-<tr>
-<td title='demowebshop.homepage.homepagetestcase.TC_HOME_01_HomepageLoads()'><b>TC_HOME_01_HomepageLoads</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td title='demowebshop.login.signup_logintestcase.TC_ID06_verifyLoginPageOpens()'><b>TC_ID06_verifyLoginPageOpens</b><br>Test class: demowebshop.login.signup_logintestcase</td>
 <td></td>
 <td>0</td>
-<td>demowebshop.homepage.homepagetestcase@15de0b3c</td></tr>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.checkout.checkouttestcase.verifyRequiredBillingFieldsCannotBeSkipped()'><b>verifyRequiredBillingFieldsCannotBeSkipped</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
+<td></td>
+<td>11</td>
+<td>demowebshop.checkout.checkouttestcase@198b6731</td></tr>
+<tr>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_06_SearchOneCharacter()'><b>TC_HOME_06_SearchOneCharacter</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>4</td>
+<td>demowebshop.homepage.homepagetestcase@489115ef</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID08_loginWithInvalidOrBlankCredentials()'><b>TC_ID08_loginWithInvalidOrBlankCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID08, Scenario=Login with invalid credentials, Gender=, FirstName=, LastName=, Email=wrong-user@example.com, Password=WrongPassword123, ConfirmPassword=}</td>
+<td></td>
+<td>4</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.checkout.checkouttestcase.verifyProductAndTotalOnOrderReview()'><b>verifyProductAndTotalOnOrderReview</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
+<td></td>
+<td>12</td>
+<td>demowebshop.checkout.checkouttestcase@198b6731</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID01_verifyRegistrationPageOpens()'><b>TC_ID01_verifyRegistrationPageOpens</b><br>Test class: demowebshop.login.signup_logintestcase</td>
+<td></td>
+<td>0</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.cart.carttestcase.verifyCartAfterRemovingProducts()'><b>verifyCartAfterRemovingProducts</b><br>Test class: demowebshop.cart.carttestcase</td>
+<td></td>
+<td>15</td>
+<td>demowebshop.cart.carttestcase@3857f613</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID04_registerWithInvalidEmail()'><b>TC_ID04_registerWithInvalidEmail</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID04, Scenario=Register with invalid email format, Gender=male, FirstName=Test, LastName=User, Email=invalid-email, Password=Test@12345, ConfirmPassword=Test@12345}</td>
+<td></td>
+<td>1</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.cart.carttestcase.verifyCartPageOpens()'><b>verifyCartPageOpens</b><br>Test class: demowebshop.cart.carttestcase</td>
+<td></td>
+<td>2</td>
+<td>demowebshop.cart.carttestcase@3857f613</td></tr>
+<tr>
+<td title='demowebshop.cart.carttestcase.verifyContinueShopping()'><b>verifyContinueShopping</b><br>Test class: demowebshop.cart.carttestcase</td>
+<td></td>
+<td>9</td>
+<td>demowebshop.cart.carttestcase@3857f613</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID08_loginWithInvalidOrBlankCredentials()'><b>TC_ID08_loginWithInvalidOrBlankCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID08, Scenario=Login with blank credentials, Gender=, FirstName=, LastName=, Email=, Password=, ConfirmPassword=}</td>
+<td></td>
+<td>4</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.checkout.checkouttestcase.verifyCheckoutStartsFromNonEmptyCart()'><b>verifyCheckoutStartsFromNonEmptyCart</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
+<td></td>
+<td>8</td>
+<td>demowebshop.checkout.checkouttestcase@198b6731</td></tr>
+<tr>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_04_CompleteSearchWorkflow()'><b>TC_HOME_04_CompleteSearchWorkflow</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>1</td>
+<td>demowebshop.homepage.homepagetestcase@489115ef</td></tr>
+<tr>
+<td title='demowebshop.cart.carttestcase.verifyQuantityCanBeUpdated()'><b>verifyQuantityCanBeUpdated</b><br>Test class: demowebshop.cart.carttestcase</td>
+<td></td>
+<td>9</td>
+<td>demowebshop.cart.carttestcase@3857f613</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID05_registerWithExistingEmail()'><b>TC_ID05_registerWithExistingEmail</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID05, Scenario=Register with an existing email, Gender=male, FirstName=kiran, LastName=gouda, Email=kirangoudav@gmail.com, Password=kiran@123, ConfirmPassword=kiran@123}</td>
+<td></td>
+<td>2</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID07_loginWithValidCredentials()'><b>TC_ID07_loginWithValidCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID07, Scenario=Login with valid credentials, Gender=, FirstName=, LastName=, Email=kirangoudav@gmail.com, Password=Kiran123, ConfirmPassword=}</td>
+<td></td>
+<td>2</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_02_SearchProduct()'><b>TC_HOME_02_SearchProduct</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>1</td>
+<td>demowebshop.homepage.homepagetestcase@489115ef</td></tr>
 <tr>
 <td title='demowebshop.checkout.checkouttestcase.completeOrderSuccessfully()'><b>completeOrderSuccessfully</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
 <td></td>
 <td>8</td>
-<td>demowebshop.checkout.checkouttestcase@3857f613</td></tr>
+<td>demowebshop.checkout.checkouttestcase@198b6731</td></tr>
 <tr>
-<td title='demowebshop.login.signup_logintestcase.TC_ID08_loginWithInvalidOrBlankCredentials()'><b>TC_ID08_loginWithInvalidOrBlankCredentials</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID08, Scenario=Login with blank credentials, Gender=, FirstName=, LastName=, Email=, Password=, ConfirmPassword=}</td>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_05_SearchInvalidProduct()'><b>TC_HOME_05_SearchInvalidProduct</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>4</td>
+<td>demowebshop.homepage.homepagetestcase@489115ef</td></tr>
+<tr>
+<td title='demowebshop.login.signup_logintestcase.TC_ID03_registerWithBlankFields()'><b>TC_ID03_registerWithBlankFields</b><br>Test class: demowebshop.login.signup_logintestcase<br>Parameters: {TestCaseID=TC_ID03, Scenario=Register with blank required fields, Gender=, FirstName=, LastName=, Email=, Password=, ConfirmPassword=}</td>
+<td></td>
+<td>0</td>
+<td>demowebshop.login.signup_logintestcase@22ff4249</td></tr>
+<tr>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_03_OpenProductDetails()'><b>TC_HOME_03_OpenProductDetails</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>3</td>
+<td>demowebshop.homepage.homepagetestcase@489115ef</td></tr>
+<tr>
+<td title='demowebshop.checkout.checkouttestcase.verifyCheckoutFlowWithoutPlacingOrder()'><b>verifyCheckoutFlowWithoutPlacingOrder</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
 <td></td>
 <td>11</td>
-<td>demowebshop.login.signup_logintestcase@6025e1b6</td></tr>
+<td>demowebshop.checkout.checkouttestcase@198b6731</td></tr>
+<tr>
+<td title='demowebshop.homepage.homepagetestcase.TC_HOME_01_HomepageLoads()'><b>TC_HOME_01_HomepageLoads</b><br>Test class: demowebshop.homepage.homepagetestcase</td>
+<td></td>
+<td>0</td>
+<td>demowebshop.homepage.homepagetestcase@489115ef</td></tr>
+<tr>
+<td title='demowebshop.checkout.checkouttestcase.verifyBillingAddressFieldsDisplayed()'><b>verifyBillingAddressFieldsDisplayed</b><br>Test class: demowebshop.checkout.checkouttestcase</td>
+<td></td>
+<td>9</td>
+<td>demowebshop.checkout.checkouttestcase@198b6731</td></tr>
 </table><p>
 </body>
 </html>

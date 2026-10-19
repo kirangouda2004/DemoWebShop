@@ -1,3 +1,4 @@
+
 package demowebshop.login;
 
 import java.io.IOException;
@@ -22,9 +23,21 @@ public class signup_logintestcase extends baseclass {
 
     private static final String SHEET_NAME = "SignupLoginData";
 
-    // Read the matching test data from Excel
-    private static List<Map<String, String>> readTestData(String testCaseID)
-            throws IOException {
+    // Open a page using the URL configured in CommonData.properties
+    private void openPage(String page) {
+        String baseUrl = properties.getProperty("url");
+
+        if (baseUrl == null || baseUrl.isBlank()) {
+            throw new IllegalStateException(
+                    "Application URL is missing in CommonData.properties");
+        }
+
+        driver.get(baseUrl.replaceAll("/+$", "") + "/" + page);
+    }
+
+    // Read matching test data from Excel
+    private static List<Map<String, String>> readTestData(
+            String testCaseID) throws IOException {
 
         ExcelUtility excel = new ExcelUtility(EXCEL_PATH, SHEET_NAME);
 
@@ -82,7 +95,7 @@ public class signup_logintestcase extends baseclass {
     @Test(groups = {"Smoke"})
     public void TC_ID01_verifyRegistrationPageOpens() {
 
-        driver.get("https://demowebshop.tricentis.com/register");
+        openPage("register");
 
         Assert.assertTrue(
                 driver.getCurrentUrl().contains("/register"),
@@ -99,7 +112,7 @@ public class signup_logintestcase extends baseclass {
 
         RegisterPage registerPage = new RegisterPage(driver);
 
-        driver.get("https://demowebshop.tricentis.com/register");
+        openPage("register");
 
         // Generate a different email address for each execution
         String uniqueEmail = "kiran"
@@ -132,8 +145,7 @@ public class signup_logintestcase extends baseclass {
 
         RegisterPage registerPage = new RegisterPage(driver);
 
-        driver.get("https://demowebshop.tricentis.com/register");
-
+        openPage("register");
         registerPage.clickRegister();
 
         boolean validationDisplayed = !driver.findElements(
@@ -156,7 +168,7 @@ public class signup_logintestcase extends baseclass {
 
         RegisterPage registerPage = new RegisterPage(driver);
 
-        driver.get("https://demowebshop.tricentis.com/register");
+        openPage("register");
 
         registerPage.enterRegistrationDetails(
                 data.get("Gender"),
@@ -200,7 +212,7 @@ public class signup_logintestcase extends baseclass {
                 && !existingEmail.startsWith("REPLACE_WITH"),
                 "Enter an already registered email in the Excel sheet.");
 
-        driver.get("https://demowebshop.tricentis.com/register");
+        openPage("register");
 
         registerPage.enterRegistrationDetails(
                 data.get("Gender"),
@@ -224,7 +236,7 @@ public class signup_logintestcase extends baseclass {
     @Test(groups = {"Smoke"})
     public void TC_ID06_verifyLoginPageOpens() {
 
-        driver.get("https://demowebshop.tricentis.com/login");
+        openPage("login");
 
         LoginPage loginPage = new LoginPage(driver);
 
@@ -260,7 +272,7 @@ public class signup_logintestcase extends baseclass {
                 && !password.trim().isEmpty(),
                 "Enter the correct account password in the Excel sheet.");
 
-        driver.get("https://demowebshop.tricentis.com/login");
+        openPage("login");
 
         loginPage.login(email, password);
 
@@ -279,7 +291,7 @@ public class signup_logintestcase extends baseclass {
 
         LoginPage loginPage = new LoginPage(driver);
 
-        driver.get("https://demowebshop.tricentis.com/login");
+        openPage("login");
 
         loginPage.login(
                 data.get("Email"),

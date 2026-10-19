@@ -1,4 +1,3 @@
-
 package ecom.bitm.demowebshop.objRepo;
 
 import org.openqa.selenium.WebDriver;
@@ -9,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
 
     private WebDriver driver;
+    private String baseUrl;
 
     // Register and login links
     @FindBy(linkText = "Register")
@@ -53,15 +53,17 @@ public class HomePage {
     @FindBy(linkText = "Gift Cards")
     private WebElement giftCardsLink;
 
-    public HomePage(WebDriver driver) {
+    // Initialize page elements and application URL
+    public HomePage(WebDriver driver, String baseUrl) {
         this.driver = driver;
+        this.baseUrl = baseUrl;
         PageFactory.initElements(driver, this);
     }
 
     // Checks whether the home page is open
     public boolean isHomePageDisplayed() {
         return driver.getCurrentUrl()
-                .contains("demowebshop.tricentis.com");
+                .startsWith(baseUrl);
     }
 
     // Opens the registration page

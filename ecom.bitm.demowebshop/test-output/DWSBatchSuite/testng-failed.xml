@@ -3,17 +3,13 @@
 <suite name="Failed suite [DWSBatchSuite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="BatchTests(failed)">
     <classes>
-      <class name="demowebshop.login.signup_logintestcase">
+      <class name="demowebshop.checkout.checkouttestcase">
         <methods>
-          <include name="TC_ID05_registerWithExistingEmail"/>
           <include name="setUp"/>
-          <include name="TC_ID07_loginWithValidCredentials"/>
-          <include name="TC_ID08_loginWithInvalidOrBlankCredentials"/>
-          <include name="TC_ID04_registerWithInvalidEmail"/>
-          <include name="TC_ID06_verifyLoginPageOpens"/>
+          <include name="verifyProductAndTotalOnOrderReview"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- demowebshop.login.signup_logintestcase -->
+      </class> <!-- demowebshop.checkout.checkouttestcase -->
     </classes>
   </test> <!-- BatchTests(failed) -->
 </suite> <!-- Failed suite [DWSBatchSuite] -->
