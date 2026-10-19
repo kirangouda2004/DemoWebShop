@@ -33,8 +33,7 @@ public class checkouttestcase extends baseclass {
         int waitSeconds = Integer.parseInt(
                 properties.getProperty("explicitWait", "20"));
 
-        return new WebDriverWait(
-                driver, Duration.ofSeconds(waitSeconds));
+        return new WebDriverWait(driver, Duration.ofSeconds(waitSeconds));
     }
 
     private String getBaseUrl() {
@@ -48,7 +47,7 @@ public class checkouttestcase extends baseclass {
         return baseUrl.replaceAll("/+$", "") + "/";
     }
 
-    // Read test data from Excel.
+    // Read test data from Excel using the TestCaseID.
     private String getTestData(String testCaseID, String columnName)
             throws IOException {
 
@@ -69,7 +68,7 @@ public class checkouttestcase extends baseclass {
                 "Test case not found in Excel: " + testCaseID);
     }
 
-    // Log in using Excel credentials.
+    // Log in using credentials from Excel.
     private void loginToApplication(String testCaseID)
             throws IOException {
 
@@ -94,12 +93,10 @@ public class checkouttestcase extends baseclass {
     private void addProductToCart(String testCaseID)
             throws IOException {
 
-        String productName =
-                getTestData(testCaseID, "ProductName");
+        String productName = getTestData(testCaseID, "ProductName");
 
         String searchUrl = getBaseUrl() + "search?q="
-                + URLEncoder.encode(
-                        productName, StandardCharsets.UTF_8);
+                + URLEncoder.encode(productName, StandardCharsets.UTF_8);
 
         driver.get(searchUrl);
 
@@ -130,7 +127,7 @@ public class checkouttestcase extends baseclass {
                 "Product was not added successfully.");
     }
 
-    // Open checkout with a product in the cart.
+    // Open checkout after adding a product.
     private CheckoutPage openCheckout(String testCaseID)
             throws IOException {
 
@@ -159,7 +156,7 @@ public class checkouttestcase extends baseclass {
         return checkoutPage;
     }
 
-    // Enter a new billing address from Excel.
+    // Enter a new billing address using Excel data.
     private void enterNewBillingAddress(
             String testCaseID, CheckoutPage checkoutPage)
             throws IOException {
@@ -182,27 +179,14 @@ public class checkouttestcase extends baseclass {
                 getTestData(testCaseID, "Phone"));
     }
 
-    // Click the expected checkout button, or the visible Continue button.
+    // Find and click the visible, enabled checkout button.
     private void clickCheckoutStep(By locator) {
 
         WebElement button = getWait().until(webDriver -> {
 
-            for (WebElement element : webDriver.findElements(locator)) {
-                if (element.isDisplayed() && element.isEnabled()) {
-                    return element;
-                }
-            }
+            List<WebElement> elements = webDriver.findElements(locator);
 
-            By continueButtons = By.xpath(
-                    "//input[translate(normalize-space(@value),"
-                    + "'ABCDEFGHIJKLMNOPQRSTUVWXYZ',"
-                    + "'abcdefghijklmnopqrstuvwxyz')='continue']"
-                    + " | //button[translate(normalize-space(.),"
-                    + "'ABCDEFGHIJKLMNOPQRSTUVWXYZ',"
-                    + "'abcdefghijklmnopqrstuvwxyz')='continue']");
-
-            for (WebElement element :
-                    webDriver.findElements(continueButtons)) {
+            for (WebElement element : elements) {
                 if (element.isDisplayed() && element.isEnabled()) {
                     return element;
                 }
@@ -214,7 +198,15 @@ public class checkouttestcase extends baseclass {
         button.click();
     }
 
-    // Complete the checkout steps and wait for order review.
+    // Wait for a checkout step to finish loading before continuing.
+    private void waitForVisibleElement(By locator) {
+        getWait().until(webDriver ->
+                webDriver.findElements(locator).stream()
+                        .anyMatch(element ->
+                                element.isDisplayed() && element.isEnabled()));
+    }
+
+    // Proceed through all checkout steps until order review is ready.
     private void proceedToOrderReview(
             String testCaseID, CheckoutPage checkoutPage)
             throws IOException {
@@ -230,10 +222,12 @@ public class checkouttestcase extends baseclass {
         checkoutPage.clickBillingContinue();
 
         // Step 2: Shipping address.
-        clickCheckoutStep(By.cssSelector(
-                "input.button-1.shipping-address-next-step-button"));
+        By shippingAddressContinue = By.cssSelector(
+                "input.button-1.shipping-address-next-step-button");
 
-        // Step 3: Shipping method.
+        clickCheckoutStep(shippingAddressContinue);
+
+        // Step 3: Select Ground shipping.
         By groundShipping = By.xpath(
                 "//label[contains(normalize-space(.), 'Ground')]");
 
@@ -245,7 +239,7 @@ public class checkouttestcase extends baseclass {
         clickCheckoutStep(By.cssSelector(
                 "input.button-1.shipping-method-next-step-button"));
 
-        // Step 4: Payment method.
+        // Step 4: Select Cash On Delivery.
         By cashOnDelivery = By.xpath(
                 "//label[contains(normalize-space(.), 'Cash On Delivery')]");
 
@@ -257,28 +251,26 @@ public class checkouttestcase extends baseclass {
         clickCheckoutStep(By.cssSelector(
                 "input.button-1.payment-method-next-step-button"));
 
-        // Step 5: Payment information.
+        // Step 5: Continue through payment information.
         clickCheckoutStep(By.cssSelector(
                 "input.button-1.payment-info-next-step-button"));
 
-        // Step 6: Wait for the order review Confirm Order button.
+        // Step 6: Wait for the actual Confirm Order button.
+        // The checkout steps load dynamically, so the button is used
+        // to determine when the order-review step is ready.
         By confirmOrderButton = By.cssSelector(
                 "input.button-1.confirm-order-next-step-button");
 
-        getWait().until(
-                ExpectedConditions.visibilityOfElementLocated(
-                        confirmOrderButton));
-
-        getWait().until(
-                ExpectedConditions.elementToBeClickable(
-                        confirmOrderButton));
+        waitForVisibleElement(confirmOrderButton);
     }
 
-    // Confirm the order and verify its confirmation.
+    // Place the order and verify the confirmation.
     private void confirmAndVerifyOrder(CheckoutPage checkoutPage) {
 
-        clickCheckoutStep(By.cssSelector(
-                "input.button-1.confirm-order-next-step-button"));
+        By confirmOrderButton = By.cssSelector(
+                "input.button-1.confirm-order-next-step-button");
+
+        clickCheckoutStep(confirmOrderButton);
 
         getWait().until(
                 webDriver -> checkoutPage.isOrderCompletedDisplayed());
@@ -354,7 +346,7 @@ public class checkouttestcase extends baseclass {
                 "This test must not place the final order.");
     }
 
-    // TC-CHK-09: Use saved billing address and place the order.
+    // TC-CHK-09: Use the saved billing address and place the order.
     @Test(groups = "Integration")
     public void verifyProductAndTotalOnOrderReview()
             throws IOException {
@@ -377,7 +369,7 @@ public class checkouttestcase extends baseclass {
         confirmAndVerifyOrder(checkoutPage);
     }
 
-    // TC-CHK-10: Use new billing address and place the order.
+    // TC-CHK-10: Enter a new billing address and place the order.
     @Test(groups = "System")
     public void completeOrderSuccessfully()
             throws IOException {
